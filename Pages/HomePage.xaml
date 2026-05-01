@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    HomePage.xaml
+    =============
+    PLACEMENT: BlitzEcoCarWash/Pages/HomePage.xaml
+
+    The main dashboard screen after login/registration.
+    Navigation from here:
+      → "Book Now" banner → BookingPage
+      → Quick Action "My Bookings" → BookingPage
+      → Bottom nav tabs
+-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlitzEcoCarWash.Pages.HomePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource BackgroundPage}">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20,50,20,20" Spacing="16">
+
+                <!-- Top Bar -->
+                <Grid ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Hello, Sipho 👋"
+                               FontSize="22" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="Where shall we wash today?"
+                               FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+                    <Frame Grid.Column="1" CornerRadius="22" HeightRequest="44" WidthRequest="44"
+                           BackgroundColor="{StaticResource OffWhite}" HasShadow="False"
+                           Padding="0" BorderColor="{StaticResource BorderColor}">
+                        <Label Text="🔔" FontSize="20"
+                               HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                </Grid>
+
+                <!-- Book a Car Wash Banner -->
+                <Frame BackgroundColor="{StaticResource PrimaryGreen}"
+                       CornerRadius="20" HasShadow="True" Padding="0">
+                    <Grid ColumnDefinitions="*, Auto" Padding="20,18">
+                        <VerticalStackLayout Grid.Column="0" Spacing="8" VerticalOptions="Center">
+                            <Label Text="Book a Car Wash" FontSize="20" FontAttributes="Bold"
+                                   TextColor="{StaticResource White}" />
+                            <Label Text="We come to your location" FontSize="13"
+                                   TextColor="#C8E6C9" />
+                            <Button Text="Book Now"
+                                    BackgroundColor="{StaticResource White}"
+                                    TextColor="{StaticResource PrimaryGreen}"
+                                    FontAttributes="Bold"
+                                    CornerRadius="20"
+                                    HeightRequest="38"
+                                    WidthRequest="120"
+                                    Padding="0"
+                                    HorizontalOptions="Start"
+                                    Clicked="OnBookNowClicked" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="🚗" FontSize="64"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </Frame>
+
+                <!-- Quick Actions -->
+                <Label Text="Quick Actions" FontSize="16" FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}" />
+
+                <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="10">
+                    <!-- My Bookings -->
+                    <Frame Grid.Column="0" Style="{StaticResource CardStyle}" Padding="10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMyBookingsTapped" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="6">
+                            <Label Text="📋" FontSize="28" HorizontalOptions="Center" />
+                            <Label Text="My Bookings" FontSize="11"
+                                   TextColor="{StaticResource TextSecondary}"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Track Wash -->
+                    <Frame Grid.Column="1" Style="{StaticResource CardStyle}" Padding="10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTrackWashTapped" />
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="6">
+                            <Label Text="📍" FontSize="28" HorizontalOptions="Center" />
+                            <Label Text="Track Wash" FontSize="11"
+                                   TextColor="{StaticResource TextSecondary}"
+                                   HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Wallet -->
+                    <Frame Grid.Column="2" Style="{StaticResource CardStyle}" Padding="10">
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="6">
+                            <Label Text="💳" FontSize="28" HorizontalOptions="Center" />
+                            <Label Text="Wallet" FontSize="11"
+                                   TextColor="{StaticResource TextSecondary}"
+                                   HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Refer & Earn -->
+                    <Frame Grid.Column="3" Style="{StaticResource CardStyle}" Padding="10">
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="6">
+                            <Label Text="🎁" FontSize="28" HorizontalOptions="Center" />
+                            <Label Text="Refer &amp; Earn" FontSize="11"
+                                   TextColor="{StaticResource TextSecondary}"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- Eco Promo Card -->
+                <Frame BackgroundColor="#E8F5E9" CornerRadius="16" HasShadow="False"
+                       BorderColor="Transparent">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Go Eco, Save More! 🌿" FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource DarkGreen}" />
+                            <Label Text="Get 10% off on your next eco wash"
+                                   FontSize="13" TextColor="{StaticResource PrimaryGreen}" />
+                            <Label Text="Learn More →" FontSize="12" FontAttributes="Bold"
+                                   TextColor="{StaticResource PrimaryGreen}"
+                                   Margin="0,4,0,0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnLearnMoreTapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="🍃" FontSize="48"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </Frame>
+
+                <!-- Recent Section -->
+                <Label Text="Recent Activity" FontSize="16" FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}" />
+
+                <Frame Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout Spacing="0">
+                        <!-- Booking Item -->
+                        <Grid ColumnDefinitions="40, *, Auto" Padding="0,8" ColumnSpacing="12">
+                            <Frame Grid.Column="0" CornerRadius="20" HeightRequest="40" WidthRequest="40"
+                                   BackgroundColor="#E8F5E9" HasShadow="False" Padding="0">
+                                <Label Text="🚗" FontSize="20"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="Premium Wash" FontSize="14" FontAttributes="Bold"
+                                       TextColor="{StaticResource TextPrimary}"/>
+                                <Label Text="15 May 2025 · 12:00" FontSize="12"
+                                       TextColor="{StaticResource TextSecondary}"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2" Text="R180" FontSize="14" FontAttributes="Bold"
+                                   TextColor="{StaticResource PrimaryGreen}"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+
+                        <BoxView HeightRequest="1" BackgroundColor="{StaticResource BorderColor}" />
+
+                        <Grid ColumnDefinitions="40, *, Auto" Padding="0,8" ColumnSpacing="12">
+                            <Frame Grid.Column="0" CornerRadius="20" HeightRequest="40" WidthRequest="40"
+                                   BackgroundColor="#E8F5E9" HasShadow="False" Padding="0">
+                                <Label Text="🚙" FontSize="20"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="Basic Wash" FontSize="14" FontAttributes="Bold"
+                                       TextColor="{StaticResource TextPrimary}"/>
+                                <Label Text="10 May 2025 · 10:00" FontSize="12"
+                                       TextColor="{StaticResource TextSecondary}"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2" Text="R120" FontSize="14" FontAttributes="Bold"
+                                   TextColor="{StaticResource PrimaryGreen}"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation Bar -->
+        <Frame Grid.Row="1" BackgroundColor="{StaticResource White}"
+               HasShadow="True" CornerRadius="0" Padding="0,8,0,24"
+               BorderColor="{StaticResource BorderColor}">
+            <Grid ColumnDefinitions="*,*,*,*">
+
+                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center">
+                    <Label Text="🏠" FontSize="22" HorizontalOptions="Center" />
+                    <Label Text="Home" FontSize="11" FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryGreen}"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnMyBookingsTapped" />
+                    </VerticalStackLayout.GestureRecognizers>
+                    <Label Text="📅" FontSize="22" HorizontalOptions="Center" />
+                    <Label Text="Bookings" FontSize="11"
+                           TextColor="{StaticResource MidGray}"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center">
+                    <Label Text="💳" FontSize="22" HorizontalOptions="Center" />
+                    <Label Text="Wallet" FontSize="11"
+                           TextColor="{StaticResource MidGray}"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center">
+                    <Label Text="👤" FontSize="22" HorizontalOptions="Center" />
+                    <Label Text="Profile" FontSize="11"
+                           TextColor="{StaticResource MidGray}"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Grid>
+        </Frame>
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    BookingPage.xaml
+    ================
+    PLACEMENT: BlitzEcoCarWash/Pages/BookingPage.xaml
+
+    Step 1 of the booking flow: Select location, date, and time.
+    Navigation: → VehicleSelectionPage (Continue tapped)
+-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlitzEcoCarWash.Pages.BookingPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource BackgroundPage}">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto, *"
+              BackgroundColor="{StaticResource White}"
+              Padding="20,50,20,16">
+            <ImageButton Grid.Column="0" Source="arrow_back.png"
+                         HeightRequest="24" WidthRequest="24"
+                         Clicked="OnBackClicked" />
+            <Label Grid.Column="1" Text="Book a Car Wash"
+                   FontSize="18" FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"
+                   HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- Location -->
+                <Label Text="Select Location" FontSize="15" FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}" />
+                <Frame Style="{StaticResource CardStyle}">
+                    <Grid ColumnDefinitions="24,*">
+                        <Label Text="📍" FontSize="18" VerticalOptions="Center"/>
+                        <Entry Grid.Column="1" Text="123 Greenway St, Pretoria"
+                               Style="{StaticResource InputEntryStyle}"
+                               BackgroundColor="Transparent" />
+                    </Grid>
+                </Frame>
+
+                <!-- Date Picker -->
+                <Label Text="Select Date" FontSize="15" FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}" />
+                <Frame Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="May 2025" FontSize="14" FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryGreen}"
+                               HorizontalOptions="Center" />
+                        <!-- Day headers -->
+                        <Grid ColumnDefinitions="*,*,*,*,*,*,*">
+                            <Label Grid.Column="0" Text="Mon" FontSize="11" TextColor="{StaticResource MidGray}" HorizontalOptions="Center"/>
+                            <Label Grid.Column="1" Text="Tue" FontSize="11" TextColor="{StaticResource MidGray}" HorizontalOptions="Center"/>
+                            <Label Grid.Column="2" Text="Wed" FontSize="11" TextColor="{StaticResource MidGray}" HorizontalOptions="Center"/>
+                            <Label Grid.Column="3" Text="Thu" FontSize="11" TextColor="{StaticResource MidGray}" HorizontalOptions="Center"/>
+                            <Label Grid.Column="4" Text="Fri" FontSize="11" TextColor="{StaticResource MidGray}" HorizontalOptions="Center"/>
+                            <Label Grid.Column="5" Text="Sat" FontSize="11" TextColor="{StaticResource MidGray}" HorizontalOptions="Center"/>
+                            <Label Grid.Column="6" Text="Sun" FontSize="11" TextColor="{StaticResource MidGray}" HorizontalOptions="Center"/>
+                        </Grid>
+                        <!-- Date row -->
+                        <Grid ColumnDefinitions="*,*,*,*,*,*,*">
+                            <Frame Grid.Column="0" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                                <Label Text="12" FontSize="14" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                            </Frame>
+                            <Frame Grid.Column="1" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                                <Label Text="13" FontSize="14" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                            </Frame>
+                            <Frame Grid.Column="2" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                                <Label Text="14" FontSize="14" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                            </Frame>
+                            <!-- Selected date -->
+                            <Frame Grid.Column="3" BackgroundColor="{StaticResource PrimaryGreen}" CornerRadius="20" Padding="0" HasShadow="False">
+                                <Label Text="15" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource White}" HorizontalOptions="Center"/>
+                            </Frame>
+                            <Frame Grid.Column="4" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                                <Label Text="16" FontSize="14" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                            </Frame>
+                            <Frame Grid.Column="5" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                                <Label Text="17" FontSize="14" TextColor="{StaticResource MidGray}" HorizontalOptions="Center"/>
+                            </Frame>
+                            <Frame Grid.Column="6" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                                <Label Text="18" FontSize="14" TextColor="{StaticResource MidGray}" HorizontalOptions="Center"/>
+                            </Frame>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Time Selector -->
+                <Label Text="Select Time" FontSize="15" FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}" />
+                <HorizontalStackLayout Spacing="10">
+                    <Frame CornerRadius="20" Padding="16,8" HasShadow="False"
+                           BackgroundColor="Transparent" BorderColor="{StaticResource BorderColor}">
+                        <Label Text="08:00" FontSize="13" TextColor="{StaticResource TextPrimary}"/>
+                    </Frame>
+                    <Frame CornerRadius="20" Padding="16,8" HasShadow="False"
+                           BackgroundColor="Transparent" BorderColor="{StaticResource BorderColor}">
+                        <Label Text="10:00" FontSize="13" TextColor="{StaticResource TextPrimary}"/>
+                    </Frame>
+                    <!-- Selected time -->
+                    <Frame CornerRadius="20" Padding="16,8" HasShadow="False"
+                           BackgroundColor="{StaticResource PrimaryGreen}" BorderColor="{StaticResource PrimaryGreen}">
+                        <Label Text="12:00" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource White}"/>
+                    </Frame>
+                    <Frame CornerRadius="20" Padding="16,8" HasShadow="False"
+                           BackgroundColor="Transparent" BorderColor="{StaticResource BorderColor}">
+                        <Label Text="14:00" FontSize="13" TextColor="{StaticResource TextPrimary}"/>
+                    </Frame>
+                    <Frame CornerRadius="20" Padding="16,8" HasShadow="False"
+                           BackgroundColor="Transparent" BorderColor="{StaticResource BorderColor}">
+                        <Label Text="16:00" FontSize="13" TextColor="{StaticResource TextPrimary}"/>
+                    </Frame>
+                </HorizontalStackLayout>
+
+                <!-- Info Notice -->
+                <Frame BackgroundColor="#E8F5E9" CornerRadius="12" HasShadow="False"
+                       BorderColor="Transparent" Padding="16">
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="ℹ️" FontSize="18" VerticalOptions="Center"/>
+                        <Label Text="Our washers will come to you at the selected time and location."
+                               FontSize="13" TextColor="{StaticResource DarkGreen}"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Continue Button -->
+        <VerticalStackLayout Grid.Row="2" Padding="20,12,20,32"
+                             BackgroundColor="{StaticResource White}">
+            <Button Text="Continue →"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Clicked="OnContinueClicked" />
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>
