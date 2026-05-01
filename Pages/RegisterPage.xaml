@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    RegisterPage.xaml
+    =================
+    PLACEMENT: BlitzEcoCarWash/Pages/RegisterPage.xaml
+
+    New user registration screen.
+    Navigation from here:
+      → Back (←)       → LandingPage
+      → Sign Up button → HomePage
+      → "Login" link   → LoginPage
+-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlitzEcoCarWash.Pages.RegisterPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource White}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="32,60,32,40" Spacing="0">
+
+            <!-- Back Arrow -->
+            <ImageButton Source="arrow_back.png"
+                         HorizontalOptions="Start"
+                         HeightRequest="24" WidthRequest="24"
+                         Margin="0,0,0,24"
+                         Clicked="OnBackClicked" />
+
+            <!-- Header -->
+            <Label Text="Create Account"
+                   Style="{StaticResource PageTitleStyle}"
+                   Margin="0,0,0,4" />
+            <Label Text="Join BlitzEco Carwash"
+                   Style="{StaticResource SubtitleStyle}"
+                   Margin="0,0,0,28" />
+
+            <!-- Full Name -->
+            <Frame BackgroundColor="{StaticResource OffWhite}" CornerRadius="12"
+                   HasShadow="False" Padding="16,0"
+                   BorderColor="{StaticResource BorderColor}" Margin="0,0,0,14">
+                <Grid ColumnDefinitions="24,*">
+                    <Label Text="👤" VerticalOptions="Center" FontSize="18"/>
+                    <Entry Grid.Column="1" Placeholder="Full Name"
+                           Style="{StaticResource InputEntryStyle}"
+                           BackgroundColor="Transparent" />
+                </Grid>
+            </Frame>
+
+            <!-- Email -->
+            <Frame BackgroundColor="{StaticResource OffWhite}" CornerRadius="12"
+                   HasShadow="False" Padding="16,0"
+                   BorderColor="{StaticResource BorderColor}" Margin="0,0,0,14">
+                <Grid ColumnDefinitions="24,*">
+                    <Label Text="📧" VerticalOptions="Center" FontSize="18"/>
+                    <Entry Grid.Column="1" Placeholder="you@example.com"
+                           Keyboard="Email"
+                           Style="{StaticResource InputEntryStyle}"
+                           BackgroundColor="Transparent" />
+                </Grid>
+            </Frame>
+
+            <!-- Phone Number -->
+            <Frame BackgroundColor="{StaticResource OffWhite}" CornerRadius="12"
+                   HasShadow="False" Padding="16,0"
+                   BorderColor="{StaticResource BorderColor}" Margin="0,0,0,14">
+                <Grid ColumnDefinitions="24,*">
+                    <Label Text="📱" VerticalOptions="Center" FontSize="18"/>
+                    <Entry Grid.Column="1" Placeholder="+27 82 123 4567"
+                           Keyboard="Telephone"
+                           Style="{StaticResource InputEntryStyle}"
+                           BackgroundColor="Transparent" />
+                </Grid>
+            </Frame>
+
+            <!-- Password -->
+            <Frame BackgroundColor="{StaticResource OffWhite}" CornerRadius="12"
+                   HasShadow="False" Padding="16,0"
+                   BorderColor="{StaticResource BorderColor}" Margin="0,0,0,14">
+                <Grid ColumnDefinitions="24,*">
+                    <Label Text="🔒" VerticalOptions="Center" FontSize="18"/>
+                    <Entry Grid.Column="1" Placeholder="Create a password"
+                           IsPassword="True"
+                           Style="{StaticResource InputEntryStyle}"
+                           BackgroundColor="Transparent" />
+                </Grid>
+            </Frame>
+
+            <!-- Confirm Password -->
+            <Frame BackgroundColor="{StaticResource OffWhite}" CornerRadius="12"
+                   HasShadow="False" Padding="16,0"
+                   BorderColor="{StaticResource BorderColor}" Margin="0,0,0,28">
+                <Grid ColumnDefinitions="24,*">
+                    <Label Text="🔒" VerticalOptions="Center" FontSize="18"/>
+                    <Entry Grid.Column="1" Placeholder="Confirm your password"
+                           IsPassword="True"
+                           Style="{StaticResource InputEntryStyle}"
+                           BackgroundColor="Transparent" />
+                </Grid>
+            </Frame>
+
+            <!-- Sign Up Button → HomePage -->
+            <Button Text="Sign Up"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Clicked="OnSignUpClicked"
+                    Margin="0,0,0,20" />
+
+            <!-- Login Link -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                <Label Text="Already have an account?"
+                       FontSize="14" TextColor="{StaticResource TextSecondary}" />
+                <Label Text="Login"
+                       FontSize="14" FontAttributes="Bold"
+                       TextColor="{StaticResource PrimaryGreen}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLoginTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

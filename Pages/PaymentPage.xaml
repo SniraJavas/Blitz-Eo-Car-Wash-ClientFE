@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    PaymentPage.xaml
+    ================
+    PLACEMENT: BlitzEcoCarWash/Pages/PaymentPage.xaml
+    Step 5: Choose payment method. Navigation: → ReceiptPage
+-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlitzEcoCarWash.Pages.PaymentPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource BackgroundPage}">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*"
+              BackgroundColor="{StaticResource White}" Padding="20,50,20,16">
+            <ImageButton Grid.Column="0" Source="arrow_back.png"
+                         HeightRequest="24" WidthRequest="24" Clicked="OnBackClicked"/>
+            <Label Grid.Column="1" Text="Payment" FontSize="18" FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"
+                   HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="14">
+                <Label Text="Choose Payment Method" FontSize="15" FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}" Margin="0,0,0,4"/>
+
+                <!-- Card Payment (selected) -->
+                <Frame Style="{StaticResource CardStyle}" BorderColor="{StaticResource PrimaryGreen}">
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Frame Grid.Column="0" BackgroundColor="#E8F5E9" CornerRadius="18"
+                               HeightRequest="36" WidthRequest="36" HasShadow="False" Padding="0">
+                            <Label Text="💳" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0,0,0">
+                            <Label Text="Card Payment" FontSize="14" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"/>
+                            <Label Text="Visa, Mastercard, etc." FontSize="12"
+                                   TextColor="{StaticResource TextSecondary}"/>
+                        </VerticalStackLayout>
+                        <RadioButton Grid.Column="2" VerticalOptions="Center" />
+                    </Grid>
+                </Frame>
+
+                <!-- E-Wallet -->
+                <Frame Style="{StaticResource CardStyle}">
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Frame Grid.Column="0" BackgroundColor="{StaticResource OffWhite}" CornerRadius="18"
+                               HeightRequest="36" WidthRequest="36" HasShadow="False" Padding="0">
+                            <Label Text="📱" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0,0,0">
+                            <Label Text="E-Wallet" FontSize="14" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"/>
+                            <Label Text="PayFast, SnapScan, etc." FontSize="12"
+                                   TextColor="{StaticResource TextSecondary}"/>
+                        </VerticalStackLayout>
+                        <RadioButton Grid.Column="1" IsChecked="True" VerticalOptions="Center" />
+                    </Grid>
+                </Frame>
+
+                <!-- Cash -->
+                <Frame Style="{StaticResource CardStyle}">
+                    <Grid ColumnDefinitions="36,*,Auto">
+                        <Frame Grid.Column="0" BackgroundColor="{StaticResource OffWhite}" CornerRadius="18"
+                               HeightRequest="36" WidthRequest="36" HasShadow="False" Padding="0">
+                            <Label Text="💵" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0,0,0">
+                            <Label Text="Cash" FontSize="14" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}"/>
+                            <Label Text="Pay on completion" FontSize="12"
+                                   TextColor="{StaticResource TextSecondary}"/>
+                        </VerticalStackLayout>
+                        <RadioButton Grid.Column="1" IsChecked="True" VerticalOptions="Center" />
+                    </Grid>
+                </Frame>
+
+                <!-- Total -->
+                <Frame Style="{StaticResource CardStyle}">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Total Amount" FontSize="15" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="R200" FontSize="20" FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryGreen}" VerticalOptions="Center"/>
+                    </Grid>
+                </Frame>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="6">
+                    <Label Text="🔒" FontSize="14"/>
+                    <Label Text="Your payment is secure and encrypted." FontSize="12"
+                           TextColor="{StaticResource TextSecondary}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <VerticalStackLayout Grid.Row="2" Padding="20,12,20,32" BackgroundColor="{StaticResource White}">
+            <Button Text="Pay R200" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnPayClicked"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

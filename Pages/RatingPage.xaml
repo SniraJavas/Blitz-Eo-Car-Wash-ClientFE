@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    RatingPage.xaml
+    ===============
+    PLACEMENT: BlitzEcoCarWash/Pages/RatingPage.xaml
+    Post-wash rating screen. Navigation: → HomePage
+-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlitzEcoCarWash.Pages.RatingPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource BackgroundPage}">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*"
+              BackgroundColor="{StaticResource White}" Padding="20,50,20,16">
+            <ImageButton Grid.Column="0" Source="arrow_back.png"
+                         HeightRequest="24" WidthRequest="24" Clicked="OnBackClicked"/>
+            <Label Grid.Column="1" Text="Rate Your Experience" FontSize="18" FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"
+                   HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="24" Spacing="20">
+
+                <!-- Washer Avatar -->
+                <Frame BackgroundColor="{StaticResource PrimaryGreen}"
+                       CornerRadius="50" HeightRequest="100" WidthRequest="100"
+                       HasShadow="True" HorizontalOptions="Center" Padding="0">
+                    <Label Text="👷" FontSize="52"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Frame>
+
+                <Label Text="Thabo M." FontSize="20" FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+                <Label Text="Professional Washer" FontSize="13"
+                       TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center"
+                       Margin="0,-16,0,0"/>
+
+                <!-- Rating Question -->
+                <Label Text="How was your wash?" FontSize="18" FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+
+                <!-- Stars -->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                    <Label Text="⭐" FontSize="44"/>
+                    <Label Text="⭐" FontSize="44"/>
+                    <Label Text="⭐" FontSize="44"/>
+                    <Label Text="⭐" FontSize="44"/>
+                    <Label Text="☆" FontSize="44" TextColor="{StaticResource MidGray}"/>
+                </HorizontalStackLayout>
+
+                <Label Text="Great job! Would you like to add any comments?"
+                       FontSize="14" TextColor="{StaticResource TextSecondary}"
+                       HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
+                <!-- Comment Entry -->
+                <Frame Style="{StaticResource CardStyle}">
+                    <Editor Placeholder="Write your comment here..."
+                            HeightRequest="100"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource TextPrimary}"
+                            PlaceholderColor="{StaticResource MidGray}" />
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <VerticalStackLayout Grid.Row="2" Padding="24,12,24,40" Spacing="12"
+                             BackgroundColor="{StaticResource White}">
+            <Button Text="Submit Rating"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Clicked="OnSubmitClicked" />
+            <Button Text="Maybe Later"
+                    BackgroundColor="Transparent"
+                    TextColor="{StaticResource PrimaryGreen}"
+                    FontAttributes="Bold"
+                    HeightRequest="44"
+                    Clicked="OnSkipClicked" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

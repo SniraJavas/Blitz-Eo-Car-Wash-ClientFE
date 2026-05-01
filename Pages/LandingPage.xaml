@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    LandingPage.xaml
+    ================
+    PLACEMENT: BlitzEcoCarWash/Pages/LandingPage.xaml
+
+    This is the FIRST screen users see when opening the app.
+    It is set as the startup page in AppShell.xaml via ShellContent.
+
+    Navigation from here:
+      → Login Page    (btnLogin clicked)
+      → Register Page (btnRegister clicked)
+-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlitzEcoCarWash.Pages.LandingPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource White}">
+
+    <Grid RowDefinitions="*, Auto">
+
+        <!-- TOP: Brand Hero Section -->
+        <VerticalStackLayout Grid.Row="0"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Padding="40,60,40,20"
+                             Spacing="0">
+
+            <!-- Logo Circle -->
+            <Frame BackgroundColor="{StaticResource PrimaryGreen}"
+                   CornerRadius="60"
+                   HeightRequest="120"
+                   WidthRequest="120"
+                   HorizontalOptions="Center"
+                   HasShadow="True"
+                   Padding="0"
+                   Margin="0,0,0,24">
+                <Label Text="🍃"
+                       FontSize="56"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Frame>
+
+            <!-- Brand Name -->
+            <Label Text="BlitzEco"
+                   FontSize="42"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource PrimaryGreen}"
+                   HorizontalOptions="Center" />
+
+            <Label Text="CARWASH"
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource MidGray}"
+                   CharacterSpacing="6"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,32" />
+
+            <!-- Tagline Card -->
+            <Frame BackgroundColor="{StaticResource OffWhite}"
+                   CornerRadius="16"
+                   HasShadow="False"
+                   Padding="24,20"
+                   Margin="0,0,0,8">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Eco-friendly. Spotless results."
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center" />
+                    <Label Text="We come to you. 🚗✨"
+                           FontSize="16"
+                           TextColor="{StaticResource PrimaryGreen}"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    <Label Text="Professional car wash at your doorstep — book in under 60 seconds."
+                           FontSize="13"
+                           TextColor="{StaticResource TextSecondary}"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,4,0,0" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Feature Badges Row -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="12" Margin="0,20,0,0">
+                <Frame BackgroundColor="{StaticResource AccentGreen}"
+                       CornerRadius="20" Padding="12,6" HasShadow="False">
+                    <Label Text="💧 Eco Products" FontSize="12"
+                           TextColor="{StaticResource White}" FontAttributes="Bold"/>
+                </Frame>
+                <Frame BackgroundColor="{StaticResource PrimaryGreen}"
+                       CornerRadius="20" Padding="12,6" HasShadow="False">
+                    <Label Text="📍 We Come to You" FontSize="12"
+                           TextColor="{StaticResource White}" FontAttributes="Bold"/>
+                </Frame>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+
+        <!-- BOTTOM: Call-to-Action Buttons -->
+        <VerticalStackLayout Grid.Row="1"
+                             Padding="32,16,32,48"
+                             Spacing="12">
+
+            <!-- Get Started → Navigates to RegisterPage -->
+            <Button x:Name="btnGetStarted"
+                    Text="Get Started"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Clicked="OnGetStartedClicked" />
+
+            <!-- Login → Navigates to LoginPage -->
+            <Button x:Name="btnLogin"
+                    Text="Already have an account? Login"
+                    Style="{StaticResource SecondaryButtonStyle}"
+                    Clicked="OnLoginClicked" />
+
+            <Label Text="By continuing, you agree to our Terms &amp; Privacy Policy"
+                   FontSize="11"
+                   TextColor="{StaticResource MidGray}"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,8,0,0" />
+
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

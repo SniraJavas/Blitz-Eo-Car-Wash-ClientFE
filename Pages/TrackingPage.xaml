@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    TrackingPage.xaml
+    =================
+    PLACEMENT: BlitzEcoCarWash/Pages/TrackingPage.xaml
+    Live tracking of the assigned washer. Navigation: → RatingPage (completed)
+-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlitzEcoCarWash.Pages.TrackingPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource BackgroundPage}">
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*"
+              BackgroundColor="{StaticResource White}" Padding="20,50,20,16">
+            <ImageButton Grid.Column="0" Source="arrow_back.png"
+                         HeightRequest="24" WidthRequest="24" Clicked="OnBackClicked"/>
+            <Label Grid.Column="1" Text="Track Your Wash" FontSize="18" FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}"
+                   HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="16">
+
+                <!-- Washer Info Card -->
+                <Frame Style="{StaticResource CardStyle}" BorderColor="{StaticResource PrimaryGreen}">
+                    <Grid ColumnDefinitions="56,*,Auto" ColumnSpacing="12">
+                        <Frame Grid.Column="0" CornerRadius="28" HeightRequest="56" WidthRequest="56"
+                               BackgroundColor="{StaticResource PrimaryGreen}" HasShadow="False" Padding="0">
+                            <Label Text="👷" FontSize="28"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Frame>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="4">
+                            <Label Text="Washer On The Way" FontSize="13"
+                                   TextColor="{StaticResource PrimaryGreen}" FontAttributes="Bold"/>
+                            <Label Text="Thabo is on his way to you." FontSize="14"
+                                   TextColor="{StaticResource TextPrimary}" FontAttributes="Bold"/>
+                            <HorizontalStackLayout Spacing="4">
+                                <Label Text="⭐ 4.8" FontSize="13" TextColor="{StaticResource TextSecondary}"/>
+                                <Label Text="· Professional Washer" FontSize="13" TextColor="{StaticResource TextSecondary}"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                        <HorizontalStackLayout Grid.Column="2" Spacing="8" VerticalOptions="Center">
+                            <Frame BackgroundColor="#E8F5E9" CornerRadius="22" HeightRequest="44" WidthRequest="44"
+                                   Padding="0" HasShadow="False">
+                                <Label Text="📞" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                            <Frame BackgroundColor="#E8F5E9" CornerRadius="22" HeightRequest="44" WidthRequest="44"
+                                   Padding="0" HasShadow="False">
+                                <Label Text="💬" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- Map Placeholder -->
+                <Frame CornerRadius="20" HasShadow="True" Padding="0" HeightRequest="200"
+                       BackgroundColor="#E8F5E9" BorderColor="{StaticResource BorderColor}">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="8">
+                        <Label Text="🗺️" FontSize="48" HorizontalOptions="Center"/>
+                        <Label Text="Live Map View" FontSize="15" FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryGreen}" HorizontalOptions="Center"/>
+                        <Label Text="12 min away" FontSize="13"
+                               TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Status Progress -->
+                <Frame Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout Spacing="16">
+                        <Label Text="Booking Status" FontSize="14" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"/>
+
+                        <Grid ColumnDefinitions="Auto,*,Auto,*,Auto,*,Auto">
+                            <!-- On the way (active) -->
+                            <Frame Grid.Column="0" BackgroundColor="{StaticResource PrimaryGreen}"
+                                   CornerRadius="16" HeightRequest="32" WidthRequest="32"
+                                   HasShadow="False" Padding="0">
+                                <Label Text="✓" FontSize="16" TextColor="{StaticResource White}"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                            <BoxView Grid.Column="1" HeightRequest="2" BackgroundColor="{StaticResource PrimaryGreen}"
+                                     VerticalOptions="Center"/>
+                            <!-- Arrived -->
+                            <Frame Grid.Column="2" BackgroundColor="{StaticResource LightGray}"
+                                   CornerRadius="16" HeightRequest="32" WidthRequest="32"
+                                   HasShadow="False" Padding="0">
+                                <Label Text="2" FontSize="14" TextColor="{StaticResource MidGray}"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                            <BoxView Grid.Column="3" HeightRequest="2" BackgroundColor="{StaticResource BorderColor}"
+                                     VerticalOptions="Center"/>
+                            <!-- In Progress -->
+                            <Frame Grid.Column="4" BackgroundColor="{StaticResource LightGray}"
+                                   CornerRadius="16" HeightRequest="32" WidthRequest="32"
+                                   HasShadow="False" Padding="0">
+                                <Label Text="3" FontSize="14" TextColor="{StaticResource MidGray}"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                            <BoxView Grid.Column="5" HeightRequest="2" BackgroundColor="{StaticResource BorderColor}"
+                                     VerticalOptions="Center"/>
+                            <!-- Completed -->
+                            <Frame Grid.Column="6" BackgroundColor="{StaticResource LightGray}"
+                                   CornerRadius="16" HeightRequest="32" WidthRequest="32"
+                                   HasShadow="False" Padding="0">
+                                <Label Text="4" FontSize="14" TextColor="{StaticResource MidGray}"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,*,*,*">
+                            <Label Text="On the way" FontSize="10" TextColor="{StaticResource PrimaryGreen}"
+                                   FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Text="Arrived" FontSize="10" TextColor="{StaticResource MidGray}"
+                                   HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            <Label Grid.Column="2" Text="In Progress" FontSize="10" TextColor="{StaticResource MidGray}"
+                                   HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            <Label Grid.Column="3" Text="Completed" FontSize="10" TextColor="{StaticResource MidGray}"
+                                   HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Demo: Simulate completion -->
+                <Button Text="Simulate: Wash Complete → Rate"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Clicked="OnCompleteClicked"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <VerticalStackLayout Grid.Row="2" Padding="20,12,20,32" BackgroundColor="{StaticResource White}">
+            <Button Text="Need Help?" Style="{StaticResource SecondaryButtonStyle}"
+                    Clicked="OnHelpClicked"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

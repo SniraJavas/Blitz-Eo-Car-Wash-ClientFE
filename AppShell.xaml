@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    AppShell.xaml
+    =============
+    This is the ROOT navigation container for the entire app.
+    All pages are registered here as routes so Shell.Current.GoToAsync("///RouteName") works.
+
+    PLACEMENT: Root of project → BlitzEcoCarWash/AppShell.xaml
+-->
+<Shell x:Class="BlitzEcoCarWash.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:BlitzEcoCarWash.Pages"
+       Shell.NavBarIsVisible="False"
+       FlyoutBehavior="Disabled">
+
+    <!--
+        The ShellContent below sets the INITIAL PAGE of the app.
+        When the app launches, LandingPage is shown first.
+        All other pages are reached via GoToAsync() in code-behind.
+    -->
+    <ShellContent
+        Title="Landing"
+        ContentTemplate="{DataTemplate pages:LandingPage}"
+        Route="LandingPage" />
+
+</Shell>
