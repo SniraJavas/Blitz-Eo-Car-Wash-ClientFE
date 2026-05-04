@@ -30470,11 +30470,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sinikiwe.jumba\\source\\repos\\BlitzEcoCarWash\\BlitzEcoCarWash.csproj",
+      "projectUniqueName": "C:\\Users\\sinikiwe.jumba\\source\\repos\\Blitz-Eo-Car-Wash-ClientFE\\BlitzEcoCarWash.csproj",
       "projectName": "BlitzEcoCarWash",
-      "projectPath": "C:\\Users\\sinikiwe.jumba\\source\\repos\\BlitzEcoCarWash\\BlitzEcoCarWash.csproj",
+      "projectPath": "C:\\Users\\sinikiwe.jumba\\source\\repos\\Blitz-Eo-Car-Wash-ClientFE\\BlitzEcoCarWash.csproj",
       "packagesPath": "C:\\Users\\sinikiwe.jumba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sinikiwe.jumba\\source\\repos\\BlitzEcoCarWash\\obj\\",
+      "outputPath": "C:\\Users\\sinikiwe.jumba\\source\\repos\\Blitz-Eo-Car-Wash-ClientFE\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [

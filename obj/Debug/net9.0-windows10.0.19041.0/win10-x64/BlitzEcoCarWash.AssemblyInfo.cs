@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlitzEcoCarWash")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+b255a7de3b32e3e51db8c55ea32f720577edbad4")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlitzEcoCarWash")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlitzEcoCarWash")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
